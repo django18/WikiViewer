@@ -18,23 +18,6 @@ body {
     height: 100vh;
     background: linear-gradient(to right top,$gradient-light,$gradient-dark),url(../imgs/wiki.jpg);
     text-align: center;
-
-    .header{
-        padding: 20px 0px;
-        position: absolute;
-        left: 50%;
-        top: 20%;
-        transform: translateX(-50%); 
-
-        .primary-heading{
-            font-size: 60px;
-            font-weight: 800;
-            font-family: 'Berkshire Swash', cursive;
-            color: white;
-            animation-name: slideinLeft;
-            animation-duration: 3s;
-        }
-    }
 }
   
 .search-box {
@@ -44,7 +27,7 @@ body {
     text-align: center;
     position: absolute;
     left: 50%;
-    top: 40%;
+    top: 10%;
     transform: translateX(-50%); 
        
     .input-el {      
@@ -52,13 +35,32 @@ body {
       transition: all 0.4s; 
       animation-name: slideinRight;
       animation-duration: 2s;
+      margin: auto;
     }
 
     .input-el:focus{
         outline: none;
-        transform: scaleX(1.5);
+        width:800px;
         border-radius: 0;
         font-size: 1em;
+    }
+
+    .header{
+        padding: 20px 0px;
+        display: block;
+        // position: absolute;
+        // left: 50%;
+        // top: 20%;
+        // transform: translateX(-50%); 
+
+        .primary-heading{
+            font-size: 100px;
+            font-weight: 800;
+            font-family: 'Berkshire Swash', cursive;
+            color: white;
+            animation-name: slideinLeft;
+            animation-duration: 3s;
+        }
     }
 }
 
@@ -144,4 +146,12 @@ footer{
         text-decoration: none;
         color: white;
     }
+}
+
+.search-result-div{
+    position: absolute;
+    bottom: 40%;
+    left: 0;
+
+
 }
