@@ -5,14 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
     <title>Document</title>
 </head>
 <body ng-app="wikiViewer" ng-init="getRandom()" ng-controller="wiki-controller">
     <div class="container">
-        <div class="search-box">
-            <input type="text" ng-model="searchValue" class="input-el">
-            <a href="" class="btn btn-white" onclick="search()">Search</a>
+        <div class="header">
+            <h1 class="primary-heading">Wiki Viewer</h1>
         </div>
+        <div class="search-box">
+            <input type="text" ng-model="searchValue" ng-change="searchValueChanged()" class="input-el">
+            <a href="" class="btn btn-white" ng-click="getSearchResult()">Search</a>
+            <a href="" class="btn btn-white" ng-click="getRandom()">Feeling Lucky</a>
+        </div>
+        <footer>
+            Build with AngularJs and SCSS by <a href="https://github.com/django18">Avinash Dangi</a> 
+        </footer>
     </div>
     
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.js'></script>
