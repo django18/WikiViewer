@@ -13,8 +13,10 @@ app.config(['$httpProvider', function($httpProvider) {
 
 app.controller("wiki-controller",function($scope,$http,$sce){
     $scope.searchValue="";
-    $scope.randomURL='http://en.wikipedia.org/w/api.php?format=json&action=opensearch&search=';
+    $scope.searchURL='http://en.wikipedia.org/w/api.php?format=json&action=opensearch&search=';
+    $scope.randomURL='https://en.wikipedia.org/wiki/Special:Random';
     $scope.resultList=[];
+    $scope.autoCompleteList=[];
     $scope.flag=false;
     $scope.searchValueChange=function(){
         console.log($scope.searchValue);
@@ -23,32 +25,15 @@ app.controller("wiki-controller",function($scope,$http,$sce){
     $scope.getSearchResult=function(){
         
         console.log("Search clicked :",$scope.searchValue);
-        $http.get($scope.randomURL+$scope.searchValue)
-        .then(function(response){
-            $scope.resultList=$scope.getFormattedData(response.data);
-            console.log(response);
-            $scope.flag=true;
-        })
-    }
-
-    $scope.getRandom=function(){
-        console.log("Get Random Wiki");
-
-        // $http.get($scope.randomURL+$scope.searchValue)
-        // .then(function(response){
-        //     console.log(response);
-        // })
-
-        // var trustedUrl = $sce.trustAsResourceUrl($scope.randomURL);
-        // $http.jsonp(trustedUrl,{jsonpCallbackParam: 'callback'})
-        // .then(function(data){
-        //     console.log(data);
-        // });
-    
-
-        // fetch($scope.randomURL).then(function(response) {
-        //     console.log(document.location(response.url));
-        //   })
+        if($scope.searchValue){
+            $http.get($scope.searchURL+$scope.searchValue)
+            .then(function(response){
+                $scope.resultList=$scope.getFormattedData(response.data);
+                console.log(response);
+                $scope.flag=true;
+            })
+        }
+        
     }
 
     $scope.getFormattedData=function(data){

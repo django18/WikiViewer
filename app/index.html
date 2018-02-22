@@ -8,28 +8,33 @@
     <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
     <title>Document</title>
 </head>
-<body ng-app="wikiViewer" ng-init="getRandom()" ng-controller="wiki-controller">
+<body ng-app="wikiViewer" ng-init="" ng-controller="wiki-controller">
     <div class="container">
        
-        <div class="search-box">
-            <div class="header">
-                <h1 class="primary-heading">Wiki Viewer</h1>
+        <div class="search-box-header-container">
+            <div class="search-box">
+                <div class="header">
+                    <h1 class="primary-heading">Wiki Viewer</h1>
+                </div>
+                
+                <input type="text" ng-model="searchValue" ng-change="searchValueChanged()" class="input-el">
+                <a href="" class="btn btn-white" ng-click="getSearchResult()">Search</a>
+                <a href="https://en.wikipedia.org/wiki/Special:Random" class="btn btn-white">Feeling Lucky</a>
             </div>
-            
-            <input type="text" ng-model="searchValue" ng-change="searchValueChanged()" class="input-el">
-            <a href="" class="btn btn-white" ng-click="getSearchResult()">Search</a>
-            <a href="" class="btn btn-white" ng-click="getRandom()">Feeling Lucky</a>
-        </div>
+       </div>
+        
         <div class="search-result-div" ng-show="flag">
-            <p class="search-query-title">{{searchValue}}</p>
+            <!-- <p class="search-query-title">{{searchValue}}</p> -->
             <a href={{item.link}} ng-repeat="item in resultList" class="search-result-item">
-                <h3 class="search-result-item-title">{{item.title}}</h3>
+                <p class="search-result-item-title">{{item.title}}</p>
                 <p class="search-result-item-desc">{{item.desc}}</p>
             </a>
         </div>
+
         <footer>
             Build with AngularJs and SCSS by <a href="https://github.com/django18">Avinash Dangi</a> 
         </footer>
+
     </div>
     
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.js'></script>
